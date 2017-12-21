@@ -11,6 +11,7 @@ export default class Month extends PureComponent {
     const {
       DayComponent,
       disabledDates,
+      enabledDates,
       disabledDays,
       monthDate,
       locale,
@@ -51,11 +52,12 @@ export default class Month extends PureComponent {
         isToday = (date === _today);
 
         isDisabled = (
-					minDate && date < _minDate ||
-					maxDate && date > _maxDate ||
-					disabledDays && disabledDays.length && disabledDays.indexOf(dow) !== -1 ||
-					disabledDates && disabledDates.length && disabledDates.indexOf(date) !== -1
-				);
+          (minDate && date < _minDate) ||
+          (maxDate && date > _maxDate) ||
+          (disabledDays && disabledDays.length && disabledDays.indexOf(dow) !== -1) ||
+          (disabledDates && disabledDates.length && disabledDates.indexOf(date) !== -1) ||
+          (enabledDates.length && !enabledDates.includes(date))
+        );
 
         days[k] = (
 					<DayComponent
