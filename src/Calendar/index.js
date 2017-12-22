@@ -59,6 +59,7 @@ export default class Calendar extends Component {
     className: PropTypes.string,
     DayComponent: PropTypes.func,
     disabledDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+    enabledDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     disabledDays: PropTypes.arrayOf(PropTypes.number),
     display: PropTypes.oneOf(['years', 'days']),
     displayOptions: PropTypes.shape({
@@ -271,6 +272,7 @@ export default class Calendar extends Component {
       DayComponent,
 			disabledDays,
       displayDate,
+      enabledDates,
 			height,
       HeaderComponent,
       rowHeight,
@@ -322,6 +324,7 @@ export default class Calendar extends Component {
             dateFormat={locale.headerFormat}
             display={display}
             displayDate={displayDate}
+            enabledDates={enabledDates}
             {...passThrough.Header}
           />
         }
@@ -345,6 +348,7 @@ export default class Calendar extends Component {
               }}
               DayComponent={DayComponent}
               disabledDates={disabledDates}
+              enabledDates={enabledDates}
               disabledDays={disabledDays}
               height={height}
               isScrolling={isScrolling}
